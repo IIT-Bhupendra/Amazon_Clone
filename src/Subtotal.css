@@ -1,0 +1,39 @@
+.subtotal {
+  display: flex;
+  flex-direction: column;
+  width: 260px;
+  height: 160px;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 10px 0 10px;
+  padding: 20px;
+  background-color: #ffffff;
+  z-index: 1;
+}
+
+.subtotal__generalDescription {
+  display: flex;
+  color: green;
+  font-size: 0.8em;
+  font-weight: bold;
+  align-items: center;
+}
+
+.subtotal__generalDescription > small {
+  margin-left: 5px;
+}
+
+.subtotal__price > strong {
+  color: #d48f0e;
+  font-size: 0.9em;
+}
+
+.subtotal__proceed {
+  background-color: #ffd814;
+  font-size: 0.7em;
+  font-weight: bold;
+  padding: 6px 36px;
+  border: none;
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}

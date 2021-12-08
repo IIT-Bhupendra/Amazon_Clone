@@ -1,0 +1,21 @@
+.order {
+  padding: 40px;
+  margin: 20px auto;
+  width: 60%;
+  border: 1px solid lightgray;
+  background-color: white;
+}
+
+.order > h2 {
+  margin-bottom: 10px;
+}
+
+.order__price {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.order__price > strong {
+  color: #d48f0e;
+  font-size: 0.9em;
+}
