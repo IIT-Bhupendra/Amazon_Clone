@@ -26,6 +26,7 @@ function Payment() {
         method: "post",
         url: `/payment/create?total=${getCartTotal(cart) * 100}`,
       });
+      console.log(response);
       setClientSecret(response.data.clientSecret);
     };
 

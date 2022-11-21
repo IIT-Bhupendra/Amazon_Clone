@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Outlet } from "react-router-dom";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useStateValue } from "./StateProvider";
 import Header from "./Header";
@@ -11,6 +11,8 @@ import Payment from "./Payment";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import Orders from "./Orders";
+
+const Lay = () => (<><Header /><Outlet /></>)
 
 function App() {
   const [{}, dispatch] = useStateValue();
@@ -39,45 +41,29 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route
-          path="/"
-          element={
-            <>
-              <Header />
-              <Home />
-            </>
-          }
-        />
-        <Route
-          path="/checkout"
-          element={
-            <>
-              <Header />
-              <Checkout />
-            </>
-          }
-        />
-        <Route
-          path="/payment"
-          element={
-            <>
-              <Header />
-              <Elements stripe={promise}>
-                <Payment />
-              </Elements>
-            </>
-          }
-        />
+        <Route element={<Lay />}>
+          <Route
+            path="/"
+            element={<Home />}
+          />
+          <Route
+            path="/checkout"
+            element={<Checkout />}
+          />
+          <Route
+            path="/payment"
+            element={
+                <Elements stripe={promise}>
+                  <Payment />
+                </Elements>
+            }
+          />
+          <Route
+            path="/orders"
+            element={<Orders />}
+          />
+        </Route>
         <Route path="/login" element={<Login />} />
-        <Route
-          path="/orders"
-          element={
-            <>
-              <Header />
-              <Orders />
-            </>
-          }
-        />
       </Routes>
     </div>
   );
