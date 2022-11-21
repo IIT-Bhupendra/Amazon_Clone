@@ -6,6 +6,8 @@ import { collection, onSnapshot, orderBy, query } from "@firebase/firestore";
 import "./Orders.css";
 import { async } from "@firebase/util";
 import stringify from "fast-json-stable-stringify";
+import Box from '@mui/material/Box';
+import LinearProgress from '@mui/material/LinearProgress';
 
 function Orders() {
   const [{ cart, user }, dispatch] = useStateValue();
@@ -30,7 +32,8 @@ function Orders() {
     }
   }, []);
 
-  return (
+  if(orders && user)
+    return (
     <div className="orders">
       <h1>Your Orders</h1>
       <div className="orders__order">
@@ -40,6 +43,12 @@ function Orders() {
       </div>
     </div>
   );
+
+  return <>
+  <Box sx={{ width: '100%' }}>
+      <LinearProgress />
+    </Box>
+  </>;
 }
 
 export default Orders;
